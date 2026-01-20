@@ -11,7 +11,7 @@ export const metadata: Metadata = {
 export default function SignIn() {
   return (
     <>
-      <Breadcrumb pageName="Sign In check" />
+      <Breadcrumb pageName="Signck" />
 
       <div className="rounded-[10px] bg-white shadow-1 dark:bg-gray-dark dark:shadow-card">
         <div className="flex flex-wrap items-center">
@@ -48,7 +48,7 @@ export default function SignIn() {
               </h1>
 
               <p className="w-full max-w-[375px] font-medium text-dark-4 dark:text-dark-6">
-                Please sign in to your account by completing the necessary
+                Please sinecessary
                 fields below
               </p>
 
