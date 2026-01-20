@@ -35,7 +35,7 @@ export async function getTopProducts() {
     },
     {
       image: "/images/product/product-03.png",
-      name: "Dell Inspiron 15",
+      name: "Del Inspiron 15",
       category: "Electronics",
       price: 443,
       sold: 64,
