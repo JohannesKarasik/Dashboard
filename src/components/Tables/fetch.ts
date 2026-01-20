@@ -1,5 +1,17 @@
 import * as logos from "@/assets/logos";
 
+/* ============================
+   Data only (NO JSX here)
+   ============================ */
+
+export const managementNavItems = [
+  "Offers",
+  "Products",
+  "Memberships",
+  "Rewards",
+  "Settings",
+];
+
 export async function getTopProducts() {
   // Fake delay
   await new Promise((resolve) => setTimeout(resolve, 2000));
@@ -79,7 +91,7 @@ export async function getTopChannels() {
   return [
     {
       name: "Google",
-      visitors: 3456,
+      visitors: 1456,
       revenues: 4220,
       sales: 3456,
       conversion: 2.59,
