@@ -6,61 +6,33 @@ export const NAV_DATA = [
     items: [
       {
         title: "Home",
+        url: "/",
         icon: Icons.HomeIcon,
-        items: [
-          {
-            title: "eCommerce",
-            url: "/",
-          },
-        ],
+        items: [],
       },
       {
         title: "Client Profiles",
-        url: "/calendar",
-        icon: Icons.Calendar,
+        url: "/client-profiles",
+        icon: Icons.Calendar, // you can change icon later
         items: [],
       },
-      {
-        title: "Shop Summary",
-        url: "/profile",
-        icon: Icons.User,
-        items: [],
-      },
-      {
-        title: "Memberships",
-        icon: Icons.Alphabet,
-        items: [
-          {
-            title: "Form Elements",
-            url: "/forms/form-elements",
-          },
-          {
-            title: "Form Layout",
-            url: "/forms/form-layout",
-          },
-        ],
-      },
+
+
+      
       {
         title: "App Builder",
         url: "/tables",
         icon: Icons.Table,
-        items: [
-          {
-            title: "Tables",
-            url: "/tables",
-          },
-        ],
+        items: [],
       },
+      
       {
-        title: "Payouts",
+        title: "Scan QR",
+        url: "/scan-qr",
         icon: Icons.Alphabet,
-        items: [
-          {
-            title: "Settings",
-            url: "/pages/settings",
-          },
-        ],
+        items: [],
       },
+      
     ],
   },
 

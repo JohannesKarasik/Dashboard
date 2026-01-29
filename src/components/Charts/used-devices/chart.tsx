@@ -13,13 +13,18 @@ const Chart = dynamic(() => import("react-apexcharts"), {
 });
 
 export function DonutChart({ data }: PropsType) {
+  // Remove "Unknown" safely WITHOUT breaking the chart layout
+  const filteredData = data.filter(
+    (item) => item.name.trim().toLowerCase() !== "unknown",
+  );
+
   const chartOptions: ApexOptions = {
     chart: {
       type: "donut",
       fontFamily: "inherit",
     },
-    colors: ["#5750F1", "#5475E5", "#8099EC", "#ADBCF2"],
-    labels: data.map((item) => item.name),
+    colors: ["#ca2782", "#ffc4ff", "#8c004e", "#de0054"],
+    labels: filteredData.map((item) => item.name),
     legend: {
       show: true,
       position: "bottom",
@@ -27,9 +32,10 @@ export function DonutChart({ data }: PropsType) {
         horizontal: 10,
         vertical: 5,
       },
+      // Keep legend clean (no forced % output)
       formatter: (legendName, opts) => {
-        const { seriesPercent } = opts.w.globals;
-        return `${legendName}: ${seriesPercent[opts.seriesIndex]}%`;
+        const value = opts.w.globals.series[opts.seriesIndex];
+        return `${legendName}: ${compactFormat(+value)}`;
       },
     },
     plotOptions: {
@@ -42,7 +48,7 @@ export function DonutChart({ data }: PropsType) {
             total: {
               show: true,
               showAlways: true,
-              label: "Visitors",
+              label: "Patiens",
               fontSize: "16px",
               fontWeight: "400",
             },
@@ -90,7 +96,7 @@ export function DonutChart({ data }: PropsType) {
   return (
     <Chart
       options={chartOptions}
-      series={data.map((item) => item.amount)}
+      series={filteredData.map((item) => item.amount)}
       type="donut"
     />
   );

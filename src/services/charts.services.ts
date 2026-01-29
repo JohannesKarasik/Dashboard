@@ -6,25 +6,21 @@ export async function getDevicesUsedData(
 
   const data = [
     {
-      name: "Desktop",
+      name: "New Patients",
       percentage: 0.65,
       amount: 1625,
     },
     {
-      name: "Tablet",
+      name: "Returning Patients",
       percentage: 0.1,
       amount: 250,
     },
     {
-      name: "Mobile",
+      name: "Members",
       percentage: 0.2,
       amount: 500,
     },
-    {
-      name: "Unknown",
-      percentage: 0.05,
-      amount: 125,
-    },
+
   ];
 
   if (timeFrame === "yearly") {

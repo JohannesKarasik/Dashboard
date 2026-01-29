@@ -2,7 +2,6 @@ import {
   CallIcon,
   EmailIcon,
   PencilSquareIcon,
-  UserIcon,
 } from "@/assets/icons";
 import InputGroup from "@/components/FormElements/InputGroup";
 import { TextAreaGroup } from "@/components/FormElements/InputGroup/text-area";
@@ -13,17 +12,15 @@ export function PersonalInfoForm() {
     <ShowcaseSection title="Personal Information" className="!p-7">
       <form>
         <div className="mb-5.5 flex flex-col gap-5.5 sm:flex-row">
-          <InputGroup
-            className="w-full sm:w-1/2"
-            type="text"
-            name="fullName"
-            label="Full Name"
-            placeholder="David Jhon"
-            defaultValue="David Jhon"
-            icon={<UserIcon />}
-            iconPosition="left"
-            height="sm"
-          />
+        <InputGroup
+  className="w-full sm:w-1/2"
+  type="text"
+  name="fullName"
+  label="Full Name"
+  placeholder="David Jhon"
+  defaultValue="David Jhon"
+  height="sm"
+/>
 
           <InputGroup
             className="w-full sm:w-1/2"
@@ -50,17 +47,15 @@ export function PersonalInfoForm() {
           height="sm"
         />
 
-        <InputGroup
-          className="mb-5.5"
-          type="text"
-          name="username"
-          label="Username"
-          placeholder="devidjhon24"
-          defaultValue="devidjhon24"
-          icon={<UserIcon />}
-          iconPosition="left"
-          height="sm"
-        />
+<InputGroup
+  className="mb-5.5"
+  type="text"
+  name="username"
+  label="Username"
+  placeholder="devidjhon24"
+  defaultValue="devidjhon24"
+  height="sm"
+/>
 
         <TextAreaGroup
           className="mb-5.5"

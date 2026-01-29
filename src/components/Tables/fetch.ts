@@ -4,13 +4,14 @@ import * as logos from "@/assets/logos";
    Data only (NO JSX here)
    ============================ */
 
-export const managementNavItems = [
-  "Offers",
-  "Products",
-  "Memberships",
-  "Rewards",
-  "Settings",
-];
+   export const managementNavItems = [
+    "Treatments",
+    "Offers",
+    "Products",
+    "Memberships",
+    "Rewards",
+    "Settings",
+  ];
 
 export async function getTopProducts() {
   // Fake delay
@@ -90,7 +91,7 @@ export async function getTopChannels() {
 
   return [
     {
-      name: "Google",
+      name: "Dermal fillers",
       visitors: 1456,
       revenues: 4220,
       sales: 3456,
@@ -98,7 +99,7 @@ export async function getTopChannels() {
       logo: logos.google,
     },
     {
-      name: "X.com",
+      name: "Laser hair removal",
       visitors: 3456,
       revenues: 4220,
       sales: 3456,
@@ -106,7 +107,7 @@ export async function getTopChannels() {
       logo: logos.x,
     },
     {
-      name: "Github",
+      name: "HydraFacial",
       visitors: 3456,
       revenues: 4220,
       sales: 3456,
@@ -114,7 +115,7 @@ export async function getTopChannels() {
       logo: logos.github,
     },
     {
-      name: "Vimeo",
+      name: "Chemical peel",
       visitors: 3456,
       revenues: 4220,
       sales: 3456,
@@ -122,7 +123,7 @@ export async function getTopChannels() {
       logo: logos.vimeo,
     },
     {
-      name: "Facebook",
+      name: "Microneedling",
       visitors: 3456,
       revenues: 4220,
       sales: 3456,

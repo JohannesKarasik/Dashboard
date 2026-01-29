@@ -16,7 +16,7 @@ const Chart = dynamic(() => import("react-apexcharts"), {
 
 export function CampaignVisitorsChart({ data }: PropsType) {
   const options: ApexOptions = {
-    colors: ["#5750F1"],
+    colors: ["#ca2782"],
     chart: {
       fontFamily: "Satoshi, sans-serif",
       type: "bar",
@@ -64,6 +64,7 @@ export function CampaignVisitorsChart({ data }: PropsType) {
     },
     fill: {
       opacity: 1,
+      colors: ["#ca2782"],
     },
     tooltip: {
       x: {
@@ -75,6 +76,7 @@ export function CampaignVisitorsChart({ data }: PropsType) {
   return (
     <div className="-ml-3.5 px-6 pb-1 pt-7.5">
       <Chart
+        key="campaign-visitors-#ca2782"
         options={options}
         series={[
           {

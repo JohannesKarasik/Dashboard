@@ -1,0 +1,88 @@
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from "@/components/ui/table";
+import { compactFormat, standardFormat } from "@/lib/format-number";
+import { cn } from "@/lib/utils";
+import Image from "next/image";
+import { getTopChannels } from "../fetch";
+
+export async function RevenueChannels({
+  className,
+  title = "Revenue Channels",
+  columns = ["Source", "Visitors", "Revenues", "Sales", "Conversion"],
+}: {
+  className?: string;
+  title?: string;
+  columns?: [string, string, string, string, string];
+}) {
+  const data = await getTopChannels();
+
+  return (
+    <div
+      className={cn(
+        "grid rounded-[10px] bg-white px-7.5 pb-4 pt-7.5 shadow-1 dark:bg-gray-dark dark:shadow-card",
+        className,
+      )}
+    >
+      <h2 className="mb-4 text-body-2xlg font-bold text-dark dark:text-white">
+        {title}
+      </h2>
+
+      <Table>
+        <TableHeader>
+          <TableRow className="border-none uppercase [&>th]:text-center">
+            <TableHead className="w-10 !text-left">#</TableHead>
+
+            <TableHead className="min-w-[120px] !text-left">
+              {columns[0]}
+            </TableHead>
+            <TableHead>{columns[1]}</TableHead>
+            <TableHead className="!text-right">{columns[2]}</TableHead>
+            <TableHead>{columns[3]}</TableHead>
+            <TableHead>{columns[4]}</TableHead>
+          </TableRow>
+        </TableHeader>
+
+        <TableBody>
+          {data.map((channel, i) => (
+            <TableRow
+              className="text-center text-base font-medium text-dark dark:text-white"
+              key={channel.name + i}
+            >
+              <TableCell className="!text-left text-dark-5 dark:text-dark-6">
+                {i + 1}
+              </TableCell>
+
+              <TableCell className="flex min-w-fit items-center gap-3">
+                <Image
+                  src={channel.logo}
+                  className="size-8 rounded-full object-cover"
+                  width={40}
+                  height={40}
+                  alt={channel.name + " Logo"}
+                  role="presentation"
+                />
+                <div className="">{channel.name}</div>
+              </TableCell>
+
+              <TableCell>{compactFormat(channel.visitors)}</TableCell>
+
+              <TableCell className="!text-right text-green-light-1">
+                ${standardFormat(channel.revenues)}
+              </TableCell>
+
+              <TableCell>{channel.sales}</TableCell>
+
+              <TableCell>{channel.conversion}%</TableCell>
+            </TableRow>
+          ))}
+        </TableBody>
+      </Table>
+    </div>
+  );
+}

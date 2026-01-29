@@ -7,38 +7,56 @@ import {
 } from "@/components/ui/dropdown";
 import { useIsMobile } from "@/hooks/use-mobile";
 import { cn } from "@/lib/utils";
-import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
 import { BellIcon } from "./icons";
 
 const notificationList = [
   {
-    image: "/images/user/user-15.png",
-    title: "Piter Joined the Team!",
-    subTitle: "Congratulate him",
+    title: "Sarah Thompson purchased Hydrafacial",
+    subTitle: "Treatment purchase • Just now",
   },
   {
-    image: "/images/user/user-03.png",
-    title: "New message",
-    subTitle: "Devid sent a new message",
+    title: "Anna Müller bought Skin Revival Membership",
+    subTitle: "Membership purchase • 5 minutes ago",
   },
   {
-    image: "/images/user/user-26.png",
-    title: "New Payment received",
-    subTitle: "Check your earnings",
+    title: "Michael Chen booked Microneedling",
+    subTitle: "Treatment booking • 18 minutes ago",
   },
   {
-    image: "/images/user/user-28.png",
-    title: "Jolly completed tasks",
-    subTitle: "Assign new task",
+    title: "Emma Johnson purchased Botox",
+    subTitle: "Treatment purchase • 1 hour ago",
   },
   {
-    image: "/images/user/user-27.png",
-    title: "Roman Joined the Team!",
-    subTitle: "Congratulate him",
+    title: "Sofia Martinez upgraded membership",
+    subTitle: "Gold → Platinum • Today",
   },
 ];
+
+// highlights name + product/treatment
+function renderNotificationTitle(title: string) {
+  const verbs = ["purchased", "bought", "booked", "upgraded"];
+  const verb = verbs.find((v) => title.includes(v));
+
+  if (!verb) {
+    return (
+      <span className="text-sm font-medium text-dark dark:text-white">
+        {title}
+      </span>
+    );
+  }
+
+  const [namePart, rest] = title.split(` ${verb} `);
+
+  return (
+    <span className="text-sm font-medium text-dark dark:text-white">
+      <span className="font-semibold text-primary">{namePart}</span>{" "}
+      <span className="text-dark dark:text-white">{verb}</span>{" "}
+      <span className="text-primary">{rest}</span>
+    </span>
+  );
+}
 
 export function Notification() {
   const [isOpen, setIsOpen] = useState(false);
@@ -50,17 +68,15 @@ export function Notification() {
       isOpen={isOpen}
       setIsOpen={(open) => {
         setIsOpen(open);
-
         if (setIsDotVisible) setIsDotVisible(false);
       }}
     >
       <DropdownTrigger
-        className="grid size-12 place-items-center rounded-full border bg-gray-2 text-dark outline-none hover:text-primary focus-visible:border-primary focus-visible:text-primary dark:border-dark-4 dark:bg-dark-3 dark:text-white dark:focus-visible:border-primary"
+        className="grid size-12 place-items-center rounded-full border bg-gray-2 text-dark outline-none hover:text-primary focus-visible:border-primary focus-visible:text-primary dark:border-dark-4 dark:bg-dark-3 dark:text-white"
         aria-label="View Notifications"
       >
         <span className="relative">
           <BellIcon />
-
           {isDotVisible && (
             <span
               className={cn(
@@ -75,7 +91,7 @@ export function Notification() {
 
       <DropdownContent
         align={isMobile ? "end" : "center"}
-        className="border border-stroke bg-white px-3.5 py-3 shadow-md dark:border-dark-3 dark:bg-gray-dark min-[350px]:min-w-[20rem]"
+        className="border border-stroke bg-white px-3.5 py-3 shadow-md dark:border-dark-3 dark:bg-gray-dark min-[350px]:min-w-[22rem]"
       >
         <div className="mb-1 flex items-center justify-between px-2 py-1.5">
           <span className="text-lg font-medium text-dark dark:text-white">
@@ -88,29 +104,17 @@ export function Notification() {
 
         <ul className="mb-3 max-h-[23rem] space-y-1.5 overflow-y-auto">
           {notificationList.map((item, index) => (
-            <li key={index} role="menuitem">
+            <li key={index}>
               <Link
                 href="#"
                 onClick={() => setIsOpen(false)}
-                className="flex items-center gap-4 rounded-lg px-2 py-1.5 outline-none hover:bg-gray-2 focus-visible:bg-gray-2 dark:hover:bg-dark-3 dark:focus-visible:bg-dark-3"
+                className="block rounded-lg px-2 py-2 outline-none hover:bg-gray-2 dark:hover:bg-dark-3"
               >
-                <Image
-                  src={item.image}
-                  className="size-14 rounded-full object-cover"
-                  width={200}
-                  height={200}
-                  alt="User"
-                />
+                {renderNotificationTitle(item.title)}
 
-                <div>
-                  <strong className="block text-sm font-medium text-dark dark:text-white">
-                    {item.title}
-                  </strong>
-
-                  <span className="truncate text-sm font-medium text-dark-5 dark:text-dark-6">
-                    {item.subTitle}
-                  </span>
-                </div>
+                <span className="mt-0.5 block text-sm font-medium text-dark-5 dark:text-dark-6">
+                  {item.subTitle}
+                </span>
               </Link>
             </li>
           ))}
@@ -119,7 +123,7 @@ export function Notification() {
         <Link
           href="#"
           onClick={() => setIsOpen(false)}
-          className="block rounded-lg border border-primary p-2 text-center text-sm font-medium tracking-wide text-primary outline-none transition-colors hover:bg-blue-light-5 focus:bg-blue-light-5 focus:text-primary focus-visible:border-primary dark:border-dark-3 dark:text-dark-6 dark:hover:border-dark-5 dark:hover:bg-dark-3 dark:hover:text-dark-7 dark:focus-visible:border-dark-5 dark:focus-visible:bg-dark-3 dark:focus-visible:text-dark-7"
+          className="block rounded-lg border border-primary p-2 text-center text-sm font-medium tracking-wide text-primary transition hover:bg-blue-light-5 dark:border-dark-3 dark:text-dark-6 dark:hover:bg-dark-3"
         >
           See all notifications
         </Link>

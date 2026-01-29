@@ -22,7 +22,7 @@ export function PaymentsOverviewChart({ data }: PropsType) {
     legend: {
       show: false,
     },
-    colors: ["#5750F1", "#0ABEF9"],
+    colors: ["#9d51bc", "#ff8ad8"],
     chart: {
       height: 310,
       type: "area",

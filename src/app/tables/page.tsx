@@ -1,9 +1,6 @@
 import Breadcrumb from "@/components/Breadcrumbs/Breadcrumb";
-import { InvoiceTable } from "@/components/Tables/invoice-table";
 import { TopChannels } from "@/components/Tables/top-channels";
 import { TopChannelsSkeleton } from "@/components/Tables/top-channels/skeleton";
-import { TopProducts } from "@/components/Tables/top-products";
-import { TopProductsSkeleton } from "@/components/Tables/top-products/skeleton";
 
 import { Metadata } from "next";
 import Link from "next/link";
@@ -14,11 +11,11 @@ export const metadata: Metadata = {
 };
 
 const NAV_ITEMS = [
-  { label: "Offers", href: "/offers" },
-  { label: "Products", href: "/products" },
-  { label: "Memberships", href: "/memberships" },
-  { label: "Rewards", href: "/rewards" },
-  { label: "Settings", href: "/pages/settings" },
+  { label: "Treatments", href: "/tables/treatments" },
+  { label: "Offers", href: "/tables/offers" },
+  { label: "Products", href: "/tables/products" },
+  { label: "Memberships", href: "/tables/memberships" },
+  { label: "Rewards", href: "/tables/rewards" },
 ];
 
 const TablesPage = () => {
@@ -43,14 +40,8 @@ const TablesPage = () => {
 
       <div className="space-y-10">
         <Suspense fallback={<TopChannelsSkeleton />}>
-          <TopChannels />
+        <TopChannels title="Treatments" />
         </Suspense>
-
-        <Suspense fallback={<TopProductsSkeleton />}>
-          <TopProducts />
-        </Suspense>
-
-        <InvoiceTable />
       </div>
     </>
   );

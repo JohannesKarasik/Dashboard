@@ -8,7 +8,9 @@ import { Suspense } from "react";
 import { ChatsCard } from "./_components/chats-card";
 import { OverviewCardsGroup } from "./_components/overview-cards";
 import { OverviewCardsSkeleton } from "./_components/overview-cards/skeleton";
-import { RegionLabels } from "./_components/region-labels";
+import { RevenueSourcesOverview } from "@/components/Charts/revenue-sources-overview";
+import { RevenueChannels } from "@/components/Tables/revenue-channels";
+import { RevenueChannelsSkeleton } from "@/components/Tables/revenue-channels/skeleton";
 
 type PropsType = {
   searchParams: Promise<{
@@ -45,12 +47,13 @@ export default async function Home({ searchParams }: PropsType) {
           timeFrame={extractTimeFrame("used_devices")?.split(":")[1]}
         />
 
-        <RegionLabels />
+<RevenueSourcesOverview className="col-span-12 xl:col-span-7" />
+
 
         <div className="col-span-12 grid xl:col-span-8">
-          <Suspense fallback={<TopChannelsSkeleton />}>
-            <TopChannels />
-          </Suspense>
+        <Suspense fallback={<RevenueChannelsSkeleton title="Top Revenue Channels" />}>
+  <RevenueChannels title="Top Revenue Channels" />
+</Suspense>
         </div>
 
         <Suspense fallback={null}>
